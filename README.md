@@ -1,4 +1,6 @@
 # airflow
+[![Circle CI](https://circleci.com/gh/vektorcloud/airflow.svg?style=svg)](https://circleci.com/gh/vektorcloud/airflow)
+
 Tiny Alpine image for running Apache Airflow
 
 ### Running
