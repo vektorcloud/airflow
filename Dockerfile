@@ -4,13 +4,17 @@ RUN pip install --no-cache-dir airflow[hive] docker-py && \
   apk add --no-cache bash # https://github.com/apache/incubator-airflow/blob/master/airflow/jobs.py#L1977
 
 EXPOSE 8080
-VOLUME /dags
+VOLUME /airflow
 
-COPY dags/ /dags
+COPY dags/ /airflow/dags
 COPY entrypoint.sh /
 
-ENV AIRFLOW__CORE__DAGS_FOLDER=/dags
+ENV AIRFLOW__CORE__AIRFLOW_HOME=/airflow
+ENV AIRFLOW__CORE__DAGS_FOLDER=/airflow/dags
+ENV AIRFLOW__CORE__BASE_LOG_FOLDER=/airflow/logs
+ENV AIRFLOW__CORE__PLUGINS_FOLDER=/airflow/plugins
 ENV AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+ENV AIRFLOW__CORE__SQL_ALCHEMY_CONN=sqlite:////airflow/airflow.db
 ENV AIRFLOW__CORE__LOAD_EXAMPLES=False
 
 ENTRYPOINT ["/entrypoint.sh"]

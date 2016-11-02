@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ ! -d "$HOME/airflow/airflow.db" ]; then
+if [ ! -d "/airflow/airflow.db" ]; then
   airflow initdb
 fi
 
