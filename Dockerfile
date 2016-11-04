@@ -1,7 +1,8 @@
 FROM quay.io/vektorcloud/scipy:latest
 
 RUN pip install --no-cache-dir airflow[hive] docker-py && \
-  apk add --no-cache bash # https://github.com/apache/incubator-airflow/blob/master/airflow/jobs.py#L1977
+  apk add --no-cache bash && \
+  apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community add dumb-init
 
 EXPOSE 8080
 VOLUME /airflow

@@ -1,12 +1,7 @@
-#!/bin/sh
+#!/usr/bin/dumb-init /bin/sh
 
-if [ ! -d "/airflow/airflow.db" ]; then
+if [ "$AIRFLOW_INIT_DB" -eq 1 ]; then
   airflow initdb
 fi
 
-if [ $# -eq 0 ]; then
-  airflow scheduler & airflow webserver
-else
-  exec "$@"
-fi
-
+exec "$@"
