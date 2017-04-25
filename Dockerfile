@@ -1,5 +1,7 @@
 FROM quay.io/vektorcloud/scipy:latest
 
+ENV COMPONENTS="celery,hive,mysql,s3,slack"
+
 RUN apk add --no-cache \
   bash \
   libxslt \
@@ -9,7 +11,7 @@ RUN apk add --no-cache \
   linux-headers \
   && apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community add dumb-init \
   && CFLAGS="-I/usr/include/libxml2" \
-  pip install --no-cache-dir airflow[hive] docker-py
+  pip install --no-cache-dir airflow["$AIRFLOW_COMPONENTS"] docker-py
 
 EXPOSE 8080
 VOLUME /airflow
