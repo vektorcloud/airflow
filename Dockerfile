@@ -11,7 +11,7 @@ RUN apk add --no-cache \
   linux-headers \
   && apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community add dumb-init \
   && CFLAGS="-I/usr/include/libxml2" \
-  pip install --no-cache-dir airflow["$AIRFLOW_COMPONENTS"] celery docker-py
+  pip install --no-cache-dir apache-airflow["$AIRFLOW_COMPONENTS"] celery docker-py
 
 EXPOSE 8080
 VOLUME /airflow
