@@ -1,6 +1,6 @@
 # airflow
 
-![circleci][circleci]
+[![circleci][circleci]](https://circleci.com/gh/vektorcloud/airflow)
 
 Tiny Alpine image for running Apache Airflow
 
